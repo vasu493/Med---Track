@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediTrack - Medicine Tracking System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">Medicine added to your tracking list!</div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-heartbeat"></i> MediTrack</div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#track"><i class="fas fa-pills"></i> Track Medicine</a></li>
+            <li><a href="#ai-doctor"><i class="fas fa-user-md"></i> AI Doctor</a></li>
+            <li><a href="#order"><i class="fas fa-shopping-cart"></i> Order Medicine</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </nav>
+
+    <!-- Landing Page -->
+    <header class="landing" id="home">
+        <div class="landing-content animate__animated animate__fadeIn">
+            <h1 class="animate__animated animate__fadeInDown">Your Health, Our Priority</h1>
+            <p class="animate__animated animate__fadeInUp">Track, manage, and order your medications with ease through our advanced medicine tracking system</p>
+            <a href="#track" class="btn animate__animated animate__fadeInUp animate__delay-1s">Get Started</a>
+            
+            <div class="features">
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-calendar-check"></i>
+                    <h3>Medication Reminder</h3>
+                    <p>Never miss a dose with personalized reminders</p>
+                </div>
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-user-md"></i>
+                    <h3>AI Consultation</h3>
+                    <p>Get instant health recommendations from our AI</p>
+                </div>
+                <div class="feature-card animate__animated animate__fadeInUp animate__delay-1s">
+                    <i class="fas fa-truck"></i>
+                    <h3>Quick Delivery</h3>
+                    <p>Order medicines and get them delivered in 24 hours</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Medicine Tracking -->
+    <section class="tracking" id="track">
+        <div class="container">
+            <h2 class="section-title">Track Your Medication</h2>
+            <div class="card">
+                <form id="med-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-capsules"></i> Medicine Name:</label>
+                        <input type="text" id="med-name" placeholder="Enter medicine name" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-weight"></i> Dosage (mg):</label>
+                        <input type="number" id="dosage" placeholder="Enter dosage amount" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="far fa-clock"></i> Time:</label>
+                        <input type="time" id="time" required>
+                    </div>
+                    <button type="submit" class="btn"><i class="fas fa-plus"></i> Add Medicine</button>
+                </form>
+            </div>
+            
+            <h3 style="margin: 30px 0 20px; color: var(--primary);">Your Medication Schedule</h3>
+            <div id="med-list" class="med-list">
+                <!-- Medicine items will be added here dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Doctor -->
+    <section class="ai-doctor" id="ai-doctor">
+        <div class="container">
+            <h2 class="section-title">AI Doctor Consultation</h2>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 20px; color: var(--secondary);">Choose a Specialist</h3>
+                <div class="doctor-dropdown">
+                    <select id="doctor-specialty" class="form-control">
+                        <option value="">Select a Specialist</option>
+                        <option value="General Physician">General Physician</option>
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                        <option value="Neurologist">Neurologist</option>
+                        <option value="Pediatrician">Pediatrician</option>
+                    </select>
+                </div>
+                
+                <div id="doctor-list" class="doctor-list" style="margin-top: 30px;">
+                    <!-- Doctors will be shown here based on selection -->
+                </div>
+                
+                <h3 style="margin: 30px 0 20px; color: var(--secondary);">Common Symptoms</h3>
+                <div class="symptom-list">
+                    <div class="symptom-pill" data-symptom="Fever">Fever</div>
+                    <div class="symptom-pill" data-symptom="Headache">Headache</div>
+                    <div class="symptom-pill" data-symptom="Cough">Cough</div>
+                    <div class="symptom-pill" data-symptom="Sore Throat">Sore Throat</div>
+                    <div class="symptom-pill" data-symptom="Runny Nose">Runny Nose</div>
+                    <div class="symptom-pill" data-symptom="Body Ache">Body Ache</div>
+                </div>
+                
+                <form id="ai-form" style="margin-top: 30px;">
+                    <div class="form-group">
+                        <label><i class="fas fa-stethoscope"></i> Describe Your Issue:</label>
+                        <textarea id="health-issue" rows="4" placeholder="Describe your symptoms here..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn"><i class="fas fa-comment-medical"></i> Consult AI Doctor</button>
+                </form>
+            </div>
+            
+            <div id="ai-response" class="ai-response">
+                <!-- AI response will be shown here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Medicine -->
+    <section class="order" id="order">
+        <div class="container">
+            <h2 class="section-title">Order Medicine Online</h2>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 20px; color: var(--accent);">Popular Medicines</h3>
+                <div class="medicine-cards">
+                    <div class="medicine-card">
+                        <div class="medicine-img">
+                            <img src="./images/paracetamol.jpeg" alt="Paracetamol">
+                        </div>
+                        <div class="medicine-info">
+                            <div class="medicine-name">Paracetamol</div>
+                            <div class="medicine-desc">Pain reliever and fever reducer</div>
+                            <div class="medicine-price">$5.99</div>
+                            <button class="add-to-cart" data-name="Paracetamol" data-price="5.99"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="medicine-card">
+                        <div class="medicine-img">
+                            <img src="./images/ibuprofen.jpg" alt="Ibuprofen">
+                        </div>
+                        <div class="medicine-info">
+                            <div class="medicine-name">Ibuprofen</div>
+                            <div class="medicine-desc">Anti-inflammatory pain reliever</div>
+                            <div class="medicine-price">$7.49</div>
+                            <button class="add-to-cart" data-name="Ibuprofen" data-price="7.49"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="medicine-card">
+                        <div class="medicine-img">
+                            <img src="./images/cough syrup.webp" alt="Cough Syrup">
+                        </div>
+                        <div class="medicine-info">
+                            <div class="medicine-name">Cough Syrup</div>
+                            <div class="medicine-desc">Relief from cough and cold</div>
+                            <div class="medicine-price">$9.99</div>
+                            <button class="add-to-cart" data-name="Cough Syrup" data-price="9.99"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    
+                    <div class="medicine-card">
+                        <div class="medicine-img">
+                            <img src="./images/multi vitamins.webp" alt="Multivitamins">
+                        </div>
+                        <div class="medicine-info">
+                            <div class="medicine-name">Multivitamins</div>
+                            <div class="medicine-desc">Essential vitamins and minerals</div>
+                            <div class="medicine-price">$12.99</div>
+                            <button class="add-to-cart" data-name="Multivitamins" data-price="12.99"><i class="fas fa-cart-plus"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3 style="margin: 30px 0 20px; color: var(--accent);">Order Custom Medicine</h3>
+                <form id="order-form">
+                    <div class="form-group">
+                        <label><i class="fas fa-pills"></i> Medicine Name:</label>
+                        <input type="text" id="order-name" placeholder="Enter medicine name" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-sort-amount-up"></i> Quantity:</label>
+                        <input type="number" id="order-qty" placeholder="Enter quantity" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-prescription"></i> Prescription Required:</label>
+                        <select id="prescription-required">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+                    <div id="prescription-upload" style="display: none;">
+                        <div class="form-group">
+                            <label><i class="fas fa-file-medical"></i> Upload Prescription:</label>
+                            <input type="file" id="prescription-file">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                </form>
+            </div>
+            
+            <div class="card" style="margin-top: 30px;">
+                <h3 style="margin-bottom: 20px; color: var(--accent);"><i class="fas fa-shopping-cart"></i> Your Cart</h3>
+                <div id="cart-items" class="cart-items">
+                    <!-- Cart items will be added here dynamically -->
+                </div>
+                <div class="cart-summary" id="cart-summary" style="display: none;">
+                    <span>Total:</span>
+                    <span class="cart-total" id="cart-total">$0.00</span>
+                </div>
+                <button id="checkout-btn" class="btn" style="width: 100%; margin-top: 20px; display: none;"><i class="fas fa-credit-card"></i> Proceed to Checkout</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About MediTrack</h3>
+                    <p>MediTrack is an advanced medicine tracking and ordering system designed to help you manage your health more effectively.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#track">Track Medicine</a></li>
+                        <li><a href="#ai-doctor">AI Doctor</a></li>
+                        <li><a href="#order">Order Medicine</a></li>
+                        <li><a href="#contact">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Health Street, Medical City</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> support@meditrack.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 MediTrack. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script for Particles.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+    <script src="./scripts/ai-doctor.js"></script>
+</body>
+</html>
