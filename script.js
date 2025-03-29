@@ -85,6 +85,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Removed duplicate declaration of menuToggle and navLinks
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+
     // Smooth Scrolling for Navigation Links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
